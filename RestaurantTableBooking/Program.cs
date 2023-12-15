@@ -1,7 +1,6 @@
 ﻿using RestaurantTableBooking;
 
 // Info: En bordreservasjon er på 2 timer
-
 var restaurant = new Restaurant("Terjes Trivelige Tapas", 16, 20);
 var tableA = restaurant.AddTable("A", 6);
 var tableB = restaurant.AddTable("B", 4);
@@ -20,6 +19,7 @@ Console.WriteLine(reservationResponse2.GetDescription());
 var reservation2 = reservationResponse2.GetReservation();
 // Denne skal være null
 restaurant.CreateReservation("Nilsen", "994 48 866", 4, dateTime);
+
 var txt = restaurant.GetAllReservationsForOneDay(dateTime.Date);
 Console.WriteLine(txt);
 //           Bord A (6 personer)     |     Bord B (4 personer)   
