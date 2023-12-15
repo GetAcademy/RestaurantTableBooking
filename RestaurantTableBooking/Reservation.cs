@@ -2,9 +2,9 @@
 {
     internal class Reservation
     {
-        private string _name;
-        private string _phone;
-        private int _personCount;
+        private readonly string _name;
+        private readonly string _phone;
+        private readonly int _personCount;
         public DateTime StartTime { get; }
         public Table Table { get; }
 
