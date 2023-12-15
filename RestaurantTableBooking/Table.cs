@@ -13,7 +13,7 @@
 
         public string GetDescription()
         {
-            return $"Bord {_name} har plass til {_capacity} personer";
+            return $"Bord {_name} ({_capacity})";
         }
 
         public bool HasCapacity(int persons)

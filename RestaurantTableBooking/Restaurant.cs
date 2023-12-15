@@ -69,9 +69,46 @@
             return true;
         }
 
-        public string GetAllReservationsForOneDay(DateTime date)
+        public void ShowAllReservationsForOneDay(DateTime date)
         {
-            return "";
+            Console.Clear();
+
+            var reservations = _reservations.Where(
+                r => r.StartTime.Year == date.Year
+                     && r.StartTime.Month == date.Month
+                     && r.StartTime.Day == date.Day);
+            ShowAllHours();
+            ShowAllTableNames();
+            foreach (var reservation in reservations)
+            {
+                var tableIndex = 1 + _tables.IndexOf(reservation.Table);
+                var x = tableIndex * 20;
+                var openingTime = new DateTime(date.Year, date.Month, date.Day, _openingHour, 0, 0);
+                var y = (int)((reservation.StartTime - openingTime).TotalMinutes) / 15;
+                reservation.Show(x, y + 1);
+            }
+        }
+
+        private void ShowAllTableNames()
+        {
+            for (var index = 0; index < _tables.Count; index++)
+            {
+                var table = _tables[index];
+                var x = (index + 1) * 20;
+                MyConsole.Write(x, 0, table.GetDescription());
+            }
+        }
+
+        private void ShowAllHours()
+        {
+            for (var hour = _openingHour; hour < _closingHour; hour++)
+            {
+                var y = (hour - _openingHour) * 4 + 1;
+                MyConsole.Write(0, y, $"{hour:D2}:00");
+                MyConsole.Write(0, y + 1, $"{hour:D2}:15");
+                MyConsole.Write(0, y + 2, $"{hour:D2}:30");
+                MyConsole.Write(0, y + 3, $"{hour:D2}:45");
+            }
         }
     }
 }

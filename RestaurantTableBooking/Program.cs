@@ -20,8 +20,12 @@ var reservation2 = reservationResponse2.GetReservation();
 // Denne skal være null
 restaurant.CreateReservation("Nilsen", "994 48 866", 4, dateTime);
 
-var txt = restaurant.GetAllReservationsForOneDay(dateTime.Date);
-Console.WriteLine(txt);
+Console.ReadKey();
+
+restaurant.ShowAllReservationsForOneDay(dateTime.Date);
+MyConsole.Write(0,20, "");
+
+//Console.WriteLine(txt);
 //           Bord A (6 personer)     |     Bord B (4 personer)   
 // 16:00                             |
 // 16:15                             |
